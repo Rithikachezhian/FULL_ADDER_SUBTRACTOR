@@ -1,6 +1,6 @@
 # FULL_ADDER_SUBTRACTOR
 
-Implementation-of-Full-Adder-and-Full-subtractor-circuit.
+Implementation-of-Full-Adder-and-Full-subtractor-circuit
 
 **AIM:**
 
@@ -38,63 +38,89 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
-**FULL ADDER:**
+FULL ADDER :
 
-![image](https://github.com/Rithikachezhian/FULL_ADDER_SUBTRACTOR/assets/145742406/90280fde-c354-4d37-88df-5561b435071b)
 
-**FULL SUBTRACTOR:**
+![image](https://github.com/user-attachments/assets/14519c14-c1ed-41ab-8783-5fff6944c1a4)
 
-![image](https://github.com/Rithikachezhian/FULL_ADDER_SUBTRACTOR/assets/145742406/1d64e179-c958-4d02-b7bf-db71730a65bc)
 
-**Procedure**
+FULL SUBTRACTOR :
 
-Write the detailed procedure here
 
-**Full Adder:**
-1.Open Quartus II and create a new project.
-2.Use schematic design entry to draw the full adder circuit. 
-3.The circuit consists of XOR, AND, and OR gates. 
-4.Compile the design, verify its functionality through simulation. 
-5.Implement the design on the target device and program it.
+![image](https://github.com/user-attachments/assets/6f8a9a73-b481-4eec-93bf-44bd71f92dc3)
 
-**Full Subtractor:** 
-1.Follow the same steps as for the full adder. 
-2.Draw the full subtractor circuit using schematic design. 
-3.The circuit includes XOR, AND, OR gates to perform subtraction. 
-4.Compile, simulate, implement, and program the design similarly to the full adder.
 
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
 
-module EX04(a,b,c,sum,carry,BO,DIFF);
-input a,b,c;
-output sum,carry,BO,DIFF;
-
-//FULL ADDER
-assign sum = a^b^c;
-assign carry = (a&b) | (b&c) | (a&c);
-wire a0;
-not (a0,a);
-
-//FULL SUBTRACTOR
-assign DIFF = a^b^c;
-assign BO = (a0&b) | (b&c) | (a0&c);
-endmodule
-
-Developed by: RITHIKA N
+Developed by: RITHIKA N 
 RegisterNumber: 212223230172
 
-**RTL Schematic**
+~~~ 
+ exp4a-full adder
 
-![image](https://github.com/Rithikachezhian/FULL_ADDER_SUBTRACTOR/assets/145742406/30557295-4bf4-4543-90ff-48ba51d685fc)
+ *module exp4a(sum, cout, a, b, cin);*
+
+    output sum;
+    output cout;
+    input a;
+    input b;
+    input cin;
+
+	 wire w1,w2,w3;
+	 assign w1=a^b;
+	 assign w2=a&b;
+	 assign w3=w1&cin;
+	 assign sum=w1^cin;
+	 assign cout=w2|w3;
+endmodule
+
+Exp4b-full subtractor
+
+*module fullsub(df, bo, a, b, bin);*
+
+    output df;
+    output bo;
+    input a;
+    input b;
+    input bin;
+    
+	wire w1,w2,w3;
+	 assign w1=a^b;
+	 assign w2=(~a&b);
+	 assign w3=(~w1&bin);
+	 assign df=w1^bin;
+	 assign bo=w2|w3;
+
+endmodule
+
+~~~
 
 
-**Output Timing Waveform**
+**RTL Schematic:**
 
-![image](https://github.com/Rithikachezhian/FULL_ADDER_SUBTRACTOR/assets/145742406/e44861b0-f297-4956-8a2d-f954acc667e5)
+FULL ADDER :
+
+![gate](https://github.com/user-attachments/assets/7edf3d63-68ae-4e8e-a729-e18b2a0855b8)
+
+FULL SUBTRACTOR :
+
+![gate](https://github.com/user-attachments/assets/cbc417ac-a923-4b68-aadc-3b74cb6fbabe)
+
+
+
+**Output Timing Waveform:**
+
+FULL ADDER :
+
+![waveform](https://github.com/user-attachments/assets/d3b55b1b-1412-46c1-aebb-c578196069bf)
+
+FULL SUBTRACTOR :
+
+![waveform](https://github.com/user-attachments/assets/98608df1-7b92-4c5a-88f0-2e61531bacd4)
+
 
 **Result:**
 
